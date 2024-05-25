@@ -1,6 +1,7 @@
 package com.bookstore.userService.controllers;
 
 import com.bookstore.userService.model.User;
+import com.bookstore.userService.model.UserWrapper;
 import com.bookstore.userService.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +19,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable int id){
+    public UserWrapper getUserById(@PathVariable int id){
         return userService.getUserById(id);
     }
 

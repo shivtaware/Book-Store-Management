@@ -2,6 +2,7 @@ package com.bookstore.userService.service;
 
 import com.bookstore.userService.dao.UserRepository;
 import com.bookstore.userService.model.User;
+import com.bookstore.userService.model.UserWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +16,16 @@ public class UserService {
         return "Success!";
     }
 
-    public User getUserById(int id) {
-        return repository.findById(id).get();
+    public UserWrapper getUserById(int id) {
+
+        User user=repository.findById(id).get();
+        UserWrapper userWrapper=new UserWrapper();
+        userWrapper.setId(user.getId());
+        userWrapper.setFirstName(user.getFirstName());
+        userWrapper.setLastName(user.getLastName());
+        userWrapper.setEmailID(user.getEmailID());
+
+        return userWrapper;
     }
 
     public String login(String userName, String password) {
